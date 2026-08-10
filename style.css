@@ -270,7 +270,6 @@ h2 {
 .arms-image img {
   max-height: 230px;
   object-fit: contain;
-  background: #111;
 }
 
 .infobox-image figcaption {
@@ -464,10 +463,6 @@ body.dark .infobox-title,
 body.dark .infobox th,
 body.dark .infobox-label {
   background: #35373b;
-}
-
-body.dark .arms-image img {
-  background: #000;
 }
 
 body.dark .source-note {
