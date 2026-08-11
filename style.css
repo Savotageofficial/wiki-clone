@@ -187,6 +187,7 @@ button {
   padding: 22px 18px 40px;
   min-height: calc(100vh - 52px);
   font-size: 13.5px;
+  margin-top: 70px;
 }
 
 .sidebar-section {
