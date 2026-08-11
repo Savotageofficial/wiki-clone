@@ -332,11 +332,10 @@ h2 {
 }
 
 .notice {
-  background: var(--notice);
-  border: 1px solid var(--light-border);
-  padding: 10px 14px;
-  margin: 15px 0;
-  font-size: 13px;
+  padding: 0px 14px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-family: 'Arial';
 }
 
 .article-body {
@@ -492,6 +491,8 @@ h2 {
 
 .prose p {
   margin: 0 0 14px;
+  font-weight: 470;
+  font-size: medium;
 }
 
 .cite a {
