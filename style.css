@@ -355,17 +355,19 @@ h2 {
 }
 
 .infobox-title {
-  background: #eaecf0;
   text-align: center;
   font-size: 17px;
   font-weight: 700;
   padding: 8px;
+  border-bottom: 1px solid var(--light-border);
 }
 
 .infobox-native {
   text-align: center;
   padding: 7px 8px;
-  font-size: 12px;
+  font-size: 17px;
+  font-weight: normal;
+  font-style: italic;
 }
 
 .infobox-emblems {
@@ -449,7 +451,7 @@ h2 {
 .infobox th {
   width: 42%;
   text-align: left;
-  background: #eaecf0;
+  /* background: #eaecf0; */
   font-weight: 700;
 }
 
@@ -466,16 +468,14 @@ h2 {
 }
 
 .infobox-label {
-  background: #eaecf0;
-  border-top: 1px solid var(--light-border);
+  background: var(--infobox);
   font-weight: 700;
-  text-align: center;
-  padding: 5px;
 }
 
 .infobox-value {
   text-align: center;
   padding: 7px;
+    border-top: 1px solid var(--light-border);
 }
 
 .infobox-value span {
@@ -972,4 +972,15 @@ body.dark .watch-button[aria-pressed="true"] {
     flex-direction: column;
     gap: 6px;
   }
+}
+
+
+.map-container {
+  text-align: center;
+}
+.map-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
