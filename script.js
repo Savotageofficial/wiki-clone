@@ -149,6 +149,58 @@ document.getElementById("searchForm").addEventListener("submit", event => {
   setTimeout(() => match.style.outline = "", 1400);
 });
 
+/* ---------- Anthem audio player ---------- */
+function formatTime(seconds) {
+  if (!isFinite(seconds) || seconds < 0) return "0:00";
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+const anthemAudio = document.getElementById("anthem-audio");
+const anthemPlay = document.getElementById("anthem-play");
+const anthemProgress = document.getElementById("anthem-progress");
+const anthemDuration = document.getElementById("anthem-duration");
+
+if (anthemAudio && anthemPlay) {
+  anthemAudio.addEventListener("loadedmetadata", () => {
+    anthemDuration.textContent = formatTime(anthemAudio.duration);
+  });
+
+  anthemAudio.addEventListener("timeupdate", () => {
+    const pct = anthemAudio.duration
+      ? (anthemAudio.currentTime / anthemAudio.duration) * 100
+      : 0;
+    anthemProgress.style.width = pct + "%";
+    anthemDuration.textContent = formatTime(
+      anthemAudio.duration - anthemAudio.currentTime
+    );
+  });
+
+  anthemAudio.addEventListener("ended", () => {
+    anthemPlay.setAttribute("aria-pressed", "false");
+    anthemProgress.style.width = "0%";
+    anthemDuration.textContent = formatTime(anthemAudio.duration);
+  });
+
+  anthemAudio.addEventListener("error", () => {
+    anthemPlay.setAttribute("aria-pressed", "false");
+    showToast("No anthem audio file found. Add one at audio/anthem.mp3.");
+  });
+
+  anthemPlay.addEventListener("click", () => {
+    if (anthemAudio.paused) {
+      anthemAudio.play().catch(() => {
+        showToast("No anthem audio file found. Add one at audio/anthem.mp3.");
+      });
+      anthemPlay.setAttribute("aria-pressed", "true");
+    } else {
+      anthemAudio.pause();
+      anthemPlay.setAttribute("aria-pressed", "false");
+    }
+  });
+}
+
 /* ---------- Footer "last edited" timestamp ---------- */
 const lastEdited = document.getElementById("lastEdited");
 if (lastEdited) {
